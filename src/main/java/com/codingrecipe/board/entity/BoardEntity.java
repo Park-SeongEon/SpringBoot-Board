@@ -1,5 +1,6 @@
 package com.codingrecipe.board.entity;
 
+import com.codingrecipe.board.dto.BoardDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,4 +30,14 @@ public class BoardEntity extends BaseEntity {
 
     @Column
     private int boardHits;
+
+    public static BoardEntity toSaveEntity(BoardDTO boardDTO) {
+        BoardEntity boardEntity = new BoardEntity();
+        boardEntity.setBoardWriter(boardDTO.getBoardWriter());
+        boardEntity.setBoardPass(boardDTO.getBoardPass());
+        boardEntity.setBoardTitle(boardDTO.getBoardTitle());
+        boardEntity.setBoardContents(boardEntity.getBoardContents());
+        boardEntity.setBoardHits(0);
+        return boardEntity;
+    }
 }
